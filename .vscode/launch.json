@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: Debug Full Stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "serverReadyAction": {
+        "pattern": "\\bLocal:.*(http://[\\w:.]+)\\b",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      },
+      "presentation": {
+        "group": "debug",
+        "order": 0
+      }
+    }
+  ]
+}
