@@ -1,5 +1,7 @@
+- 🐰 Using Bun
 - 🍝 Setting up linting and code formatting
-
+- 🤡 Setup jest for unit testing
+- 🎭 Setup Playwright for e2e testing
 
 
 
