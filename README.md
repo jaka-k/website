@@ -2,6 +2,8 @@
 - 🍝 Setting up linting and code formatting
 - 🤡 Setup jest for unit testing
 - 🎭 Setup Playwright for e2e testing
+- 🎱 CI/CD Github Actions to check tests before merging
+- 🤖 Dependabot with Bun action
 
 
 
