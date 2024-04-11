@@ -1,3 +1,11 @@
+- 🐰 Using Bun
+- 🍝 Setting up linting and code formatting
+- 🤡 Setup jest for unit testing
+- 🎭 Setup Playwright for e2e testing
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

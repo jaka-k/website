@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: '**'
+  pull_request:
+    branches: [master]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+      - run: bun jest
+
+  e2e-tests:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+
+      - name: Get installed Playwright version
+        run: echo "PLAYWRIGHT_VERSION=$(bun json ./package.json dependencies.@playwright/test)" >> $GITHUB_ENV
+
+      - name: Cache playwright binaries
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright
+        run: |
+          bun install playwright --quiet
+          bun playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: bun run test:e2e
