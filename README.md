@@ -4,6 +4,8 @@
 - 🎭 Setup Playwright for e2e testing
 - 🎱 CI/CD Github Actions to check tests before merging
 - 🤖 Dependabot with Bun action
+- 🚔 Commitlinting on Git hook with Commitizen
+- 🌈 Tailwind utils for better className readability
 
 
 
