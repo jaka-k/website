@@ -4,8 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Github, Linkedin, Calendar } from "lucide-react"
 import { ModeToggle } from "@/components/mode-toggle"
+import Profile from '@/components/profile/profile'
 
-// Blog post type definition
 type BlogPost = {
   id: string
   title: string
@@ -14,7 +14,6 @@ type BlogPost = {
   slug: string
 }
 
-// Sample blog posts
 const blogPosts: BlogPost[] = [
   {
     id: "1",
@@ -49,43 +48,13 @@ const blogPosts: BlogPost[] = [
 export default function Home() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      {/* Header with profile pic, name, and mode toggle */}
+
       <header className="flex flex-col sm:flex-row sm:justify-between mb-20">
         <div className="flex flex-col">
           <div className="flex items-start gap-5 mb-4">
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden">
-                <Image
-                  src="/placeholder.svg?height=96&width=96"
-                  alt="Profile Picture"
-                  width={96}
-                  height={96}
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://github.com/johndoe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-accent-teal transition-colors"
-                  aria-label="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/johndoe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-accent-teal transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-              </div>
-            </div>
+            <Profile />
             <div className="flex flex-col">
-              <h1 className="text-xl font-bold">John Doe</h1>
+              <h1 className="text-xl font-bold">Jaka Krajnc</h1>
               <p className="text-muted-foreground mb-4">Full Stack Developer</p>
               <Link
                 href="/book"

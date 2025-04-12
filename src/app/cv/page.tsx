@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Github, Linkedin, Calendar } from "lucide-react"
 import { ModeToggle } from "@/components/mode-toggle"
+import Profile from '@/components/profile/profile'
 
 const TechTag = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 mr-2 mb-2">
@@ -16,37 +17,7 @@ export default function CV() {
       <div className="flex flex-col sm:flex-row sm:justify-between mb-16">
         <div className="flex flex-col">
           <div className="flex items-start gap-5 mb-4">
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden">
-                <Image
-                  src="/placeholder.svg?height=96&width=96"
-                  alt="Profile Picture"
-                  width={96}
-                  height={96}
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://github.com/johndoe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-accent-teal transition-colors"
-                  aria-label="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/johndoe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-accent-teal transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-              </div>
-            </div>
+            <Profile />
             <div className="flex flex-col">
               <h1 className="text-xl font-bold text-accent-teal">Curriculum Vitae</h1>
               <p className="text-muted-foreground mb-4">John Doe</p>
