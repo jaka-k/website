@@ -1,16 +1,16 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, Github, Linkedin, Calendar } from "lucide-react"
-import { notFound } from "next/navigation"
-import { ModeToggle } from "@/components/mode-toggle"
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, Calendar, Github, Linkedin } from "lucide-react";
+import { notFound } from "next/navigation";
+import { ModeToggle } from "@/components/mode-toggle";
 
 type BlogPost = {
-  id: string
-  title: string
-  date: string
-  content: string
-  slug: string
-}
+  id: string;
+  title: string;
+  date: string;
+  content: string;
+  slug: string;
+};
 
 const blogPosts: BlogPost[] = [
   {
@@ -111,13 +111,16 @@ const blogPosts: BlogPost[] = [
     `,
     slug: "power-of-typescript",
   },
-]
+];
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((post) => post.slug === params.slug)
+type Params = Promise<{ slug: string }>;
+
+export default async function BlogPost({ params }: { params: Params }) {
+  const { slug } = await params;
+  const post = blogPosts.find((post) => post.slug === slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -188,8 +191,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <div className="mb-10">
           <span className="text-sm text-muted-foreground">{post.date}</span>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} className="text-base leading-relaxed" />
+        <div
+          dangerouslySetInnerHTML={{ __html: post.content }}
+          className="text-base leading-relaxed"
+        />
       </article>
     </div>
-  )
+  );
 }

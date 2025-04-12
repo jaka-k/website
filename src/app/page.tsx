@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowRight, Github, Linkedin, Calendar } from "lucide-react"
 import { ModeToggle } from "@/components/mode-toggle"
 import Profile from '@/components/profile/profile'
+import type React from 'react'
 
 type BlogPost = {
   id: string
@@ -99,7 +100,7 @@ export default function Home() {
             <div className="md:w-1/2">
               <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/mrag-1.png"
                   alt="TaskFlow App Screenshot"
                   width={600}
                   height={400}

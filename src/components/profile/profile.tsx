@@ -8,11 +8,11 @@ function Profile()
   return (<div className="flex flex-col items-center gap-3">
     <div className="relative w-20 h-20 rounded-full overflow-hidden">
       <Image
-        src="/placeholder.svg?height=96&width=96"
+        src="/ghibli-headshot.png"
         alt="Profile Picture"
         width={96}
         height={96}
-        className="object-cover"
+        className="object-cover grayscale"
       />
     </div>
     <div className="flex items-center gap-4">

@@ -1,127 +1,118 @@
-'use client'
+"use client";
 
-import type React from 'react'
-import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Coffee,
-  Github,
-  Linkedin,
-  Video
-} from 'lucide-react'
-import { ModeToggle } from '@/components/mode-toggle'
-import Profile from '@/components/profile/profile'
+import type React from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { ArrowLeft, Calendar, Clock, Coffee, Video } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
+import Profile from "@/components/profile/profile";
 
 type MeetingType = {
-  id: string
-  title: string
-  duration: string
-  icon: React.ReactNode
-  description: string
-}
+  id: string;
+  title: string;
+  duration: string;
+  icon: React.ReactNode;
+  description: string;
+};
 
 type TimeSlot = {
-  id: string
-  date: string
-  dayOfWeek: string
-  slots: string[]
-}
+  id: string;
+  date: string;
+  dayOfWeek: string;
+  slots: string[];
+};
 
 const meetingTypes: MeetingType[] = [
   {
-    id: 'quick-chat',
-    title: 'Quick Chat',
-    duration: '15 min',
+    id: "quick-chat",
+    title: "Quick Chat",
+    duration: "15 min",
     icon: <Coffee className="h-5 w-5" />,
     description:
-      'A brief introduction or quick question about my work or experience.'
+      "A brief introduction or quick question about my work or experience.",
   },
   {
-    id: 'portfolio-review',
-    title: 'Portfolio Review',
-    duration: '30 min',
+    id: "portfolio-review",
+    title: "Portfolio Review",
+    duration: "30 min",
     icon: <Video className="h-5 w-5" />,
     description:
-      'In-depth discussion about a specific project or technical challenge.'
+      "In-depth discussion about a specific project or technical challenge.",
   },
   {
-    id: 'interview-prep',
-    title: 'Interview Prep',
-    duration: '45 min',
+    id: "interview-prep",
+    title: "Interview Prep",
+    duration: "45 min",
     icon: <Clock className="h-5 w-5" />,
     description:
-      'Mock interview or career advice session for fellow developers.'
-  }
-]
+      "Mock interview or career advice session for fellow developers.",
+  },
+];
 
 const availableTimeSlots: TimeSlot[] = [
   {
-    id: '1',
-    date: 'Apr 10',
-    dayOfWeek: 'Wed',
-    slots: ['9:00 AM', '10:00 AM', '11:00 AM', '2:00 PM', '3:00 PM']
+    id: "1",
+    date: "Apr 10",
+    dayOfWeek: "Wed",
+    slots: ["9:00 AM", "10:00 AM", "11:00 AM", "2:00 PM", "3:00 PM"],
   },
   {
-    id: '2',
-    date: 'Apr 11',
-    dayOfWeek: 'Thu',
-    slots: ['9:00 AM', '1:00 PM', '2:00 PM', '4:00 PM']
+    id: "2",
+    date: "Apr 11",
+    dayOfWeek: "Thu",
+    slots: ["9:00 AM", "1:00 PM", "2:00 PM", "4:00 PM"],
   },
   {
-    id: '3',
-    date: 'Apr 12',
-    dayOfWeek: 'Fri',
-    slots: ['10:00 AM', '11:00 AM', '3:00 PM', '4:00 PM']
-  }
-]
+    id: "3",
+    date: "Apr 12",
+    dayOfWeek: "Fri",
+    slots: ["10:00 AM", "11:00 AM", "3:00 PM", "4:00 PM"],
+  },
+];
 
 export default function BookingPage() {
-  const [selectedMeeting, setSelectedMeeting] = useState<string | null>(null)
-  const [selectedDate, setSelectedDate] = useState<string | null>(null)
-  const [selectedTime, setSelectedTime] = useState<string | null>(null)
-  const [step, setStep] = useState(1)
+  const [selectedMeeting, setSelectedMeeting] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [step, setStep] = useState(1);
 
   const handleMeetingSelect = (id: string) => {
-    setSelectedMeeting(id)
-    setStep(2)
-  }
+    setSelectedMeeting(id);
+    setStep(2);
+  };
 
   const handleDateSelect = (date: string) => {
-    setSelectedDate(date)
-  }
+    setSelectedDate(date);
+  };
 
   const handleTimeSelect = (time: string) => {
-    setSelectedTime(time)
-    setStep(3)
-  }
+    setSelectedTime(time);
+    setStep(3);
+  };
 
   const handleBack = () => {
     if (step === 3) {
-      setSelectedTime(null)
-      setStep(2)
+      setSelectedTime(null);
+      setStep(2);
     } else if (step === 2) {
-      setSelectedDate(null)
-      setSelectedMeeting(null)
-      setStep(1)
+      setSelectedDate(null);
+      setSelectedMeeting(null);
+      setStep(1);
     }
-  }
+  };
 
   const handleConfirm = () => {
     alert(
-      `Booking confirmed: ${selectedMeeting} on ${selectedDate} at ${selectedTime}`
-    )
-  }
+      `Booking confirmed: ${selectedMeeting} on ${selectedDate} at ${selectedTime}`,
+    );
+  };
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
       <header className="flex flex-col sm:flex-row sm:justify-between mb-16">
         <div className="flex flex-col">
           <div className="flex items-start gap-5 mb-4">
-           <Profile />
+            <Profile />
             <div className="flex flex-col">
               <h1 className="text-xl font-bold">John Doe</h1>
               <p className="text-muted-foreground mb-4">Full Stack Developer</p>
@@ -153,7 +144,7 @@ export default function BookingPage() {
         {/* Booking steps */}
         <div className="flex mb-10">
           <div
-            className={`flex items-center ${step >= 1 ? 'text-accent-teal' : 'text-muted-foreground'}`}
+            className={`flex items-center ${step >= 1 ? "text-accent-teal" : "text-muted-foreground"}`}
           >
             <div className="w-8 h-8 rounded-full border flex items-center justify-center mr-2 border-current">
               1
@@ -162,11 +153,11 @@ export default function BookingPage() {
           </div>
           <div className="w-8 h-px bg-muted mx-2 self-center">
             <div
-              className={`h-full ${step >= 2 ? 'bg-accent-teal' : 'bg-muted'}`}
+              className={`h-full ${step >= 2 ? "bg-accent-teal" : "bg-muted"}`}
             ></div>
           </div>
           <div
-            className={`flex items-center ${step >= 2 ? 'text-accent-teal' : 'text-muted-foreground'}`}
+            className={`flex items-center ${step >= 2 ? "text-accent-teal" : "text-muted-foreground"}`}
           >
             <div className="w-8 h-8 rounded-full border flex items-center justify-center mr-2 border-current">
               2
@@ -175,11 +166,11 @@ export default function BookingPage() {
           </div>
           <div className="w-8 h-px bg-muted mx-2 self-center">
             <div
-              className={`h-full ${step >= 3 ? 'bg-accent-teal' : 'bg-muted'}`}
+              className={`h-full ${step >= 3 ? "bg-accent-teal" : "bg-muted"}`}
             ></div>
           </div>
           <div
-            className={`flex items-center ${step >= 3 ? 'text-accent-teal' : 'text-muted-foreground'}`}
+            className={`flex items-center ${step >= 3 ? "text-accent-teal" : "text-muted-foreground"}`}
           >
             <div className="w-8 h-8 rounded-full border flex items-center justify-center mr-2 border-current">
               3
@@ -192,13 +183,13 @@ export default function BookingPage() {
         {step === 1 && (
           <div className="space-y-6">
             <h3 className="text-xl font-bold mb-6">Select a meeting type</h3>
-            {meetingTypes.map(meeting => (
+            {meetingTypes.map((meeting) => (
               <div
                 key={meeting.id}
                 className={`border p-6 rounded-sm cursor-pointer hover:border-accent-teal transition-colors ${
                   selectedMeeting === meeting.id
-                    ? 'border-accent-teal bg-accent-teal bg-opacity-5'
-                    : 'border-border'
+                    ? "border-accent-teal bg-accent-teal bg-opacity-5"
+                    : "border-border"
                 }`}
                 onClick={() => handleMeetingSelect(meeting.id)}
               >
@@ -235,13 +226,13 @@ export default function BookingPage() {
             <h3 className="text-xl font-bold mb-6">Select a date and time</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              {availableTimeSlots.map(dateSlot => (
+              {availableTimeSlots.map((dateSlot) => (
                 <div
                   key={dateSlot.id}
                   className={`border p-6 rounded-sm cursor-pointer hover:border-accent-teal transition-colors ${
                     selectedDate === dateSlot.date
-                      ? 'border-accent-teal bg-accent-teal bg-opacity-5'
-                      : 'border-border'
+                      ? "border-accent-teal bg-accent-teal bg-opacity-5"
+                      : "border-border"
                   }`}
                   onClick={() => handleDateSelect(dateSlot.date)}
                 >
@@ -270,14 +261,14 @@ export default function BookingPage() {
                 </h4>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
                   {availableTimeSlots
-                    .find(slot => slot.date === selectedDate)
-                    ?.slots.map(time => (
+                    .find((slot) => slot.date === selectedDate)
+                    ?.slots.map((time) => (
                       <button
                         key={time}
                         className={`p-3 text-center border rounded-sm text-sm hover:border-accent-teal transition-colors ${
                           selectedTime === time
-                            ? 'border-accent-teal text-accent-teal'
-                            : 'border-gray-200 dark:border-gray-700 text-foreground'
+                            ? "border-accent-teal text-accent-teal"
+                            : "border-gray-200 dark:border-gray-700 text-foreground"
                         }`}
                         onClick={() => handleTimeSelect(time)}
                       >
@@ -308,10 +299,13 @@ export default function BookingPage() {
                 <Calendar className="h-5 w-5 text-muted-foreground mt-1 mr-3" />
                 <div>
                   <h4 className="font-bold text-base">
-                    {meetingTypes.find(m => m.id === selectedMeeting)?.title}
+                    {meetingTypes.find((m) => m.id === selectedMeeting)?.title}
                   </h4>
                   <p className="text-sm text-muted-foreground">
-                    {meetingTypes.find(m => m.id === selectedMeeting)?.duration}
+                    {
+                      meetingTypes.find((m) => m.id === selectedMeeting)
+                        ?.duration
+                    }
                   </p>
                 </div>
               </div>
@@ -383,5 +377,5 @@ export default function BookingPage() {
         )}
       </main>
     </div>
-  )
+  );
 }
