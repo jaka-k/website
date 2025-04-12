@@ -1,55 +1,58 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, Github, Linkedin, Calendar } from "lucide-react"
-import { ModeToggle } from "@/components/mode-toggle"
-import Profile from '@/components/profile/profile'
-import type React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Calendar } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
+import Profile from "@/components/profile/profile";
+import type React from "react";
 
 type BlogPost = {
-  id: string
-  title: string
-  date: string
-  excerpt: string
-  slug: string
-}
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  slug: string;
+};
 
 const blogPosts: BlogPost[] = [
   {
     id: "1",
     title: "The Future of Web Development",
     date: "April 5, 2025",
-    excerpt: "Exploring the latest trends in web development and what they mean for the industry going forward.",
+    excerpt:
+      "Exploring the latest trends in web development and what they mean for the industry going forward.",
     slug: "future-of-web-development",
   },
   {
     id: "2",
     title: "Designing for Accessibility",
     date: "March 22, 2025",
-    excerpt: "How to ensure your websites are accessible to everyone, regardless of ability or disability.",
+    excerpt:
+      "How to ensure your websites are accessible to everyone, regardless of ability or disability.",
     slug: "designing-for-accessibility",
   },
   {
     id: "3",
     title: "The Power of TypeScript",
     date: "March 10, 2025",
-    excerpt: "Why TypeScript has become an essential tool for modern JavaScript development.",
+    excerpt:
+      "Why TypeScript has become an essential tool for modern JavaScript development.",
     slug: "power-of-typescript",
   },
   {
     id: "4",
     title: "Building TaskFlow: A Minimalist Task Manager",
     date: "February 28, 2025",
-    excerpt: "The design philosophy and technical challenges behind creating a distraction-free productivity app.",
+    excerpt:
+      "The design philosophy and technical challenges behind creating a distraction-free productivity app.",
     slug: "building-taskflow",
   },
-]
+];
 
 export default function Home() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-
       <header className="flex flex-col sm:flex-row sm:justify-between mb-20">
         <div className="flex flex-col">
           <div className="flex items-start gap-5 mb-4">
@@ -78,8 +81,8 @@ export default function Home() {
         {/* Introduction */}
         <section>
           <p className="text-base mb-8">
-            I write about web development, system design, and developer tools. Currently building at TechCorp Inc.
-            Previously at InnovateSoft.
+            I write about web development, system design, and developer tools.
+            Currently building at TechCorp Inc. Previously at InnovateSoft.
           </p>
 
           {/* CV CTA */}
@@ -112,8 +115,9 @@ export default function Home() {
             <div className="md:w-1/2">
               <h3 className="text-xl font-bold mb-4">TaskFlow</h3>
               <p className="text-base mb-6">
-                A minimalist task management application designed to help you focus on what matters. Built with React,
-                TypeScript, and a clean, distraction-free UI.
+                A minimalist task management application designed to help you
+                focus on what matters. Built with React, TypeScript, and a
+                clean, distraction-free UI.
               </p>
               <div className="flex space-x-6">
                 <Link
@@ -138,19 +142,25 @@ export default function Home() {
 
         {/* Blog posts */}
         <section>
-          <h2 className="text-xl font-bold mb-10 border-b border-border pb-3">Recent Notes</h2>
+          <h2 className="text-xl font-bold mb-10 border-b border-border pb-3">
+            Recent Notes
+          </h2>
 
           <div className="space-y-12">
             {blogPosts.map((post) => (
               <article key={post.id} className="group">
                 <Link href={`/blog/${post.slug}`} className="block">
                   <div className="mb-2">
-                    <span className="text-sm text-muted-foreground">{post.date}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {post.date}
+                    </span>
                   </div>
                   <h3 className="text-base font-bold mb-2 group-hover:text-accent-teal transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-base text-muted-foreground">{post.excerpt}</p>
+                  <p className="text-base text-muted-foreground">
+                    {post.excerpt}
+                  </p>
                 </Link>
               </article>
             ))}
@@ -158,5 +168,5 @@ export default function Home() {
         </section>
       </main>
     </div>
-  )
+  );
 }

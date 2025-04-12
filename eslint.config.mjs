@@ -24,7 +24,7 @@ export default antfu(
     ignores: ["migrations/**/*", "next-env.d.ts"],
     alias: {
       "@": path.resolve(__dirname, "src"),
-      "@libs": path.resolve(__dirname, "libs"),
+      "@lib": path.resolve(__dirname, "src/lib"),
       "@public": path.resolve(__dirname, "public"),
       "@styles": path.resolve(__dirname, "src/styles"),
       "@components": path.resolve(__dirname, "src/components"),
