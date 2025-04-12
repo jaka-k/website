@@ -1,8 +1,8 @@
-import type React from "react";
-import Link from "next/link";
-import { ArrowLeft, Calendar } from "lucide-react";
-import { ModeToggle } from "@/components/mode-toggle";
-import Profile from "@/components/profile/profile";
+import type React from 'react';
+import { ModeToggle } from '@components/mode-toggle';
+import Profile from '@components/profile/profile';
+import { ArrowLeft, Calendar } from 'lucide-react';
+import Link from 'next/link';
 
 const TechTag = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 mr-2 mb-2">
@@ -189,18 +189,18 @@ export default function CV() {
         <h2 className="text-xl font-bold mb-4">Skills</h2>
         <div className="flex flex-wrap">
           {[
-            "JavaScript/TypeScript",
-            "React & Next.js",
-            "Node.js",
-            "RESTful APIs",
-            "GraphQL",
-            "AWS/Cloud Services",
-            "CI/CD Pipelines",
-            "System Architecture",
-            "Database Design",
-            "Performance Optimization",
-            "Testing (Jest, Cypress)",
-            "Agile Methodologies",
+            'JavaScript/TypeScript',
+            'React & Next.js',
+            'Node.js',
+            'RESTful APIs',
+            'GraphQL',
+            'AWS/Cloud Services',
+            'CI/CD Pipelines',
+            'System Architecture',
+            'Database Design',
+            'Performance Optimization',
+            'Testing (Jest, Cypress)',
+            'Agile Methodologies',
           ].map((skill, index) => (
             <TechTag key={index}>{skill}</TechTag>
           ))}

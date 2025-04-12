@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Calendar } from "lucide-react";
-import { ModeToggle } from "@/components/mode-toggle";
-import Profile from "@/components/profile/profile";
-import type React from "react";
+import type React from 'react';
+import { ModeToggle } from '@components/mode-toggle';
+import Profile from '@components/profile/profile';
+import { ArrowRight, Calendar } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type BlogPost = {
   id: string;
@@ -17,36 +17,36 @@ type BlogPost = {
 
 const blogPosts: BlogPost[] = [
   {
-    id: "1",
-    title: "The Future of Web Development",
-    date: "April 5, 2025",
+    id: '1',
+    title: 'The Future of Web Development',
+    date: 'April 5, 2025',
     excerpt:
-      "Exploring the latest trends in web development and what they mean for the industry going forward.",
-    slug: "future-of-web-development",
+      'Exploring the latest trends in web development and what they mean for the industry going forward.',
+    slug: 'future-of-web-development',
   },
   {
-    id: "2",
-    title: "Designing for Accessibility",
-    date: "March 22, 2025",
+    id: '2',
+    title: 'Designing for Accessibility',
+    date: 'March 22, 2025',
     excerpt:
-      "How to ensure your websites are accessible to everyone, regardless of ability or disability.",
-    slug: "designing-for-accessibility",
+      'How to ensure your websites are accessible to everyone, regardless of ability or disability.',
+    slug: 'designing-for-accessibility',
   },
   {
-    id: "3",
-    title: "The Power of TypeScript",
-    date: "March 10, 2025",
+    id: '3',
+    title: 'The Power of TypeScript',
+    date: 'March 10, 2025',
     excerpt:
-      "Why TypeScript has become an essential tool for modern JavaScript development.",
-    slug: "power-of-typescript",
+      'Why TypeScript has become an essential tool for modern JavaScript development.',
+    slug: 'power-of-typescript',
   },
   {
-    id: "4",
-    title: "Building TaskFlow: A Minimalist Task Manager",
-    date: "February 28, 2025",
+    id: '4',
+    title: 'Building TaskFlow: A Minimalist Task Manager',
+    date: 'February 28, 2025',
     excerpt:
-      "The design philosophy and technical challenges behind creating a distraction-free productivity app.",
-    slug: "building-taskflow",
+      'The design philosophy and technical challenges behind creating a distraction-free productivity app.',
+    slug: 'building-taskflow',
   },
 ];
 
@@ -128,9 +128,9 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
                 <a
-                  href="#"
+                  href="https://github.com/jaka-k/multiagent-rag-system"
                   className="text-sm text-foreground hover:text-accent-teal transition-colors inline-flex items-center border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1.5"
-                  onClick={(e) => e.preventDefault()}
+                  onClick={e => e.preventDefault()}
                 >
                   <span>View code</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -147,7 +147,7 @@ export default function Home() {
           </h2>
 
           <div className="space-y-12">
-            {blogPosts.map((post) => (
+            {blogPosts.map(post => (
               <article key={post.id} className="group">
                 <Link href={`/blog/${post.slug}`} className="block">
                   <div className="mb-2">

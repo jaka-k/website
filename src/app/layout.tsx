@@ -1,20 +1,19 @@
-import type React from 'react'
-import '@styles/globals.css'
-import { Space_Mono } from 'next/font/google'
-import { ThemeProvider } from 'next-themes'
-
+import type React from 'react';
+import { ThemeProvider } from 'next-themes';
+import { Space_Mono } from 'next/font/google';
+import '@styles/globals.css';
 
 const spaceMono = Space_Mono({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-space-mono',
-  display: 'swap'
-})
+  display: 'swap',
+});
 
 export default function RootLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -29,5 +28,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

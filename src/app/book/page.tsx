@@ -2,10 +2,10 @@
 
 import type React from "react";
 import { useState } from "react";
-import Link from "next/link";
+import { ModeToggle } from "@components/mode-toggle";
+import Profile from "@components/profile/profile";
 import { ArrowLeft, Calendar, Clock, Coffee, Video } from "lucide-react";
-import { ModeToggle } from "@/components/mode-toggle";
-import Profile from "@/components/profile/profile";
+import Link from "next/link";
 
 type MeetingType = {
   id: string;
@@ -102,7 +102,8 @@ export default function BookingPage() {
   };
 
   const handleConfirm = () => {
-    alert(
+
+    console.log(
       `Booking confirmed: ${selectedMeeting} on ${selectedDate} at ${selectedTime}`,
     );
   };
@@ -184,7 +185,8 @@ export default function BookingPage() {
           <div className="space-y-6">
             <h3 className="text-xl font-bold mb-6">Select a meeting type</h3>
             {meetingTypes.map((meeting) => (
-              <div
+              <button
+                type="button"
                 key={meeting.id}
                 className={`border p-6 rounded-sm cursor-pointer hover:border-accent-teal transition-colors ${
                   selectedMeeting === meeting.id
@@ -207,7 +209,7 @@ export default function BookingPage() {
                 <p className="text-base text-muted-foreground">
                   {meeting.description}
                 </p>
-              </div>
+              </button>
             ))}
           </div>
         )}
@@ -227,7 +229,8 @@ export default function BookingPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {availableTimeSlots.map((dateSlot) => (
-                <div
+                <button
+                  type="button"
                   key={dateSlot.id}
                   className={`border p-6 rounded-sm cursor-pointer hover:border-accent-teal transition-colors ${
                     selectedDate === dateSlot.date
@@ -250,7 +253,7 @@ export default function BookingPage() {
                       {dateSlot.slots.length} available
                     </span>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
 
@@ -264,6 +267,7 @@ export default function BookingPage() {
                     .find((slot) => slot.date === selectedDate)
                     ?.slots.map((time) => (
                       <button
+                        type="button"
                         key={time}
                         className={`p-3 text-center border rounded-sm text-sm hover:border-accent-teal transition-colors ${
                           selectedTime === time
@@ -285,6 +289,7 @@ export default function BookingPage() {
         {step === 3 && (
           <div>
             <button
+              type="button"
               onClick={handleBack}
               className="text-sm text-foreground hover:text-accent-teal transition-colors flex items-center mb-6 border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1.5"
             >
@@ -335,30 +340,42 @@ export default function BookingPage() {
               <h4 className="font-bold text-base mb-4">Your information</h4>
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm text-muted-foreground mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm text-muted-foreground mb-2"
+                  >
                     Name
                   </label>
                   <input
+                    id="name"
                     type="text"
                     className="w-full p-3 border border-gray-200 dark:border-gray-700 rounded-sm bg-background"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-muted-foreground mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm text-muted-foreground mb-2"
+                  >
                     Email
                   </label>
                   <input
+                    id="email"
                     type="email"
                     className="w-full p-3 border border-gray-200 dark:border-gray-700 rounded-sm bg-background"
                     placeholder="you@example.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-muted-foreground mb-2">
+                  <label
+                    htmlFor="topic"
+                    className="block text-sm text-muted-foreground mb-2"
+                  >
                     What would you like to discuss?
                   </label>
                   <textarea
+                    id="topic"
                     className="w-full p-3 border border-gray-200 dark:border-gray-700 rounded-sm bg-background"
                     rows={3}
                     placeholder="Brief description of what you'd like to talk about"

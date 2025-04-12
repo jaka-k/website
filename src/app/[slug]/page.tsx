@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, Calendar, Github, Linkedin } from "lucide-react";
-import { notFound } from "next/navigation";
-import { ModeToggle } from "@/components/mode-toggle";
+import { ModeToggle } from '@components/mode-toggle';
+import { ArrowLeft, Calendar, Github, Linkedin } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-type BlogPost = {
+type Post = {
   id: string;
   title: string;
   date: string;
@@ -12,11 +12,11 @@ type BlogPost = {
   slug: string;
 };
 
-const blogPosts: BlogPost[] = [
+const blogPosts: Post[] = [
   {
-    id: "1",
-    title: "The Future of Web Development",
-    date: "April 5, 2025",
+    id: '1',
+    title: 'The Future of Web Development',
+    date: 'April 5, 2025',
     content: `
       <p>The landscape of web development is constantly evolving, with new technologies and methodologies emerging at a rapid pace. As we look to the future, several key trends are shaping the way we build and interact with web applications.</p>
       
@@ -35,12 +35,12 @@ const blogPosts: BlogPost[] = [
       <h2>Conclusion</h2>
       <p>The future of web development is bright, with new tools and technologies making it easier than ever to build powerful, performant web applications. By staying informed about these trends and embracing new approaches, developers can create better experiences for users and more maintainable codebases for themselves.</p>
     `,
-    slug: "future-of-web-development",
+    slug: 'future-of-web-development',
   },
   {
-    id: "2",
-    title: "Designing for Accessibility",
-    date: "March 22, 2025",
+    id: '2',
+    title: 'Designing for Accessibility',
+    date: 'March 22, 2025',
     content: `
       <p>Accessibility in web design isn't just a nice-to-have feature—it's a necessity. Creating websites that are accessible to everyone, regardless of ability or disability, is not only the right thing to do but also makes good business sense.</p>
       
@@ -70,12 +70,12 @@ const blogPosts: BlogPost[] = [
       <h2>Conclusion</h2>
       <p>Designing for accessibility benefits everyone, not just users with disabilities. By following accessibility best practices, you create a better user experience for all visitors to your website.</p>
     `,
-    slug: "designing-for-accessibility",
+    slug: 'designing-for-accessibility',
   },
   {
-    id: "3",
-    title: "The Power of TypeScript",
-    date: "March 10, 2025",
+    id: '3',
+    title: 'The Power of TypeScript',
+    date: 'March 10, 2025',
     content: `
       <p>TypeScript has transformed the JavaScript ecosystem, bringing static typing to a dynamically typed language. This powerful superset of JavaScript has gained widespread adoption for good reason.</p>
       
@@ -109,7 +109,7 @@ const blogPosts: BlogPost[] = [
       <h2>Conclusion</h2>
       <p>TypeScript has revolutionized JavaScript development by bringing the benefits of static typing without sacrificing the flexibility that makes JavaScript great. As projects grow in size and complexity, the advantages of TypeScript become increasingly apparent, making it an invaluable tool for modern web development.</p>
     `,
-    slug: "power-of-typescript",
+    slug: 'power-of-typescript',
   },
 ];
 
@@ -117,7 +117,7 @@ type Params = Promise<{ slug: string }>;
 
 export default async function BlogPost({ params }: { params: Params }) {
   const { slug } = await params;
-  const post = blogPosts.find((post) => post.slug === slug);
+  const post = blogPosts.find(post => post.slug === slug);
 
   if (!post) {
     notFound();
